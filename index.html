@@ -11,7 +11,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0F17; }
         .glow-effect { transition: all 0.3s ease; }
-        .glow-effect:hover { box-shadow: 0 0 25px rgba(16, 185, 129, 0.2); transform: translateY(-4px); }
+        .glow-effect:hover { box-shadow: 0 0 25px rgba(16, 185, 129, 0.15); transform: translateY(-4px); }
     </style>
 </head>
 <body class="text-gray-300 antialiased selection:bg-emerald-500 selection:text-white">
@@ -74,14 +74,14 @@
         <div class="glow-effect p-8 bg-[#111827]/60 border border-gray-800 rounded-3xl grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12">
             <div class="lg:col-span-2 space-y-4">
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-between shadow-lg text-white font-bold text-xl justify-center">B</div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center shadow-lg text-white font-bold text-xl justify-center">B</div>
                     <div>
                         <h3 class="text-2xl font-bold text-white tracking-tight">BudgetZen</h3>
                         <p class="text-xs text-emerald-400 font-medium tracking-wide uppercase">Finance • Personal Productivity</p>
                     </div>
                 </div>
                 <p class="text-gray-400 leading-relaxed text-sm">
-                    A beautiful, privacy-first personal finance app that operates 100% offline. Powered by secure on-device AI algorithms for spending insights, custom project simulators, and automated CSV ledger imports. No telemetry, no algorithms tracking your net worth. Your financial dashboard stays yours.
+                    A beautiful, privacy-first personal finance app that operates 100% offline [com]. Powered by secure on-device AI algorithms for spending insights, custom project simulators, and automated CSV ledger imports. No telemetry, no algorithms tracking your net worth. Your financial dashboard stays yours.
                 </p>
                 <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-400">
                     <span class="px-2.5 py-1 bg-[#1F2937]/50 rounded-md border border-gray-700/40">Zero-Based Budget Mode</span>
@@ -94,4 +94,49 @@
                 <a href="https://google.com" target="_blank" class="w-full text-center bg-white text-[#0B0F17] font-bold py-3 px-4 rounded-xl text-sm hover:bg-emerald-400 hover:text-white transition duration-200 shadow-md">
                     Get it on Google Play
                 </a>
-                <a href="
+                <a href="https://producthunt.com" target="_blank" class="w-full text-center border border-gray-700 hover:border-emerald-500 font-medium py-2.5 px-4 rounded-xl text-xs transition duration-200">
+                    View on Product Hunt 🚀
+                </a>
+            </div>
+        </div>
+
+        <!-- FUTURE RELEASES SECTION (pipeline) -->
+        <h2 class="text-2xl font-extrabold text-white mb-8 tracking-tight flex items-center pt-8">
+            <span class="w-2 h-6 bg-purple-500 rounded-full mr-3"></span> Future Engineering Pipeline
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- FUTURE APP 1 -->
+            <div class="p-6 bg-[#111827]/20 border border-gray-800/60 rounded-2xl border-dashed relative overflow-hidden group">
+                <div class="absolute top-4 right-4 bg-purple-500/10 border border-purple-500/30 text-purple-400 px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider">
+                    In Design
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition">ZenTask AI</h3>
+                <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    A hyper-minimalist local task orchestrator and calendar that uses lightweight on-device natural language models to schedule your workload without syncing to third-party clouds.
+                </p>
+                <div class="text-[11px] font-mono text-gray-500 font-semibold uppercase tracking-wide">Target: Late 2026</div>
+            </div>
+
+            <!-- FUTURE APP 2 -->
+            <div class="p-6 bg-[#111827]/20 border border-gray-800/60 rounded-2xl border-dashed relative overflow-hidden group">
+                <div class="absolute top-4 right-4 bg-gray-700/30 border border-gray-600/30 text-gray-400 px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider">
+                    R&D Idea
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition">Byrsa Vault</h3>
+                <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    An offline, biometrically-secured locally encrypted repository designed to backup notes, secrets, and sensitive structural JSON configurations. Zero connection tracking.
+                </p>
+                <div class="text-[11px] font-mono text-gray-500 font-semibold uppercase tracking-wide">Target: 2027 Pipeline</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-900 bg-[#070A10] py-12 text-center text-xs text-gray-500">
+        <p class="mb-2">&copy; 2026 Byrsa Team. All mechanical rights reserved.</p>
+        <p class="font-mono text-gray-600">Built for high performance, compiled for supreme privacy.</p>
+    </footer>
+
+</body>
+</html>
