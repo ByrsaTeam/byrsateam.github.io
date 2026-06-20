@@ -14,7 +14,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-h-screen: 100vh;
+            min-height: 100vh;
             box-sizing: border-box;
         }
         nav {
@@ -95,7 +95,7 @@
             padding: 32px;
             border-radius: 16px;
             display: grid;
-            grid-template-cols: 1fr;
+            grid-template-columns: 1fr;
             gap: 32px;
             align-items: center;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
@@ -190,6 +190,17 @@
             color: #9CA3AF;
             margin-top: auto;
         }
+        .footer-badge {
+            margin-bottom: 16px;
+            display: block;
+        }
+        .footer-badge img {
+            vertical-align: middle;
+            transition: opacity 0.2s;
+        }
+        .footer-badge img:hover {
+            opacity: 0.8;
+        }
         footer p {
             margin: 0;
         }
@@ -227,7 +238,7 @@
                     </div>
                 </div>
                 <p class="app-description">
-                    A beautiful, privacy-first personal finance app that works 100% offline. Powered by on-device AI for daily insights, Zero-Based Budget Mode, Classic Budget Mode, Zen Score & 20 badges, smart bank CSV import, Project simulator, Weekly coach notifications, Advanced charts, 60+ currencies & 10 languages. No account, no cloud, no data tracking. Your financial data stays yours. .
+                    A beautiful, privacy-first personal finance app that works 100% offline. Powered by on-device AI for daily insights, Zero-Based Budget Mode, Classic Budget Mode, Zen Score & 20 badges, smart bank CSV import, Project simulator, Weekly coach notifications, Advanced charts, 60+ currencies & 10 languages. No account, no cloud, no data tracking. Your financial data stays yours.
                 </p>
             </div>
             <div class="btn-container">
@@ -245,7 +256,12 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Byrsa Team. Built for high performance, compiled for supreme privacy.</p>
+        <div class="footer-badge">
+            <a href="https://openhunts.com" target="_blank" title="OpenHunts Club">
+                <img alt="OpenHunts Club Member" height="105" src="https://cdn.openhunts.com/badges/club.webp" style="width: 195px; height: auto;" width="486">
+            </a>
+        </div>
+        <p>&copy; 2026 Byrsa Team. Built for high privacy.</p>
     </footer>
 
 </body>
