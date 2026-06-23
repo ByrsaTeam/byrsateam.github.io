@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetZen | Privacy-First Personal Finance — Byrsa Team</title>
+    <meta name="description" content="BudgetZen is a 100% offline, privacy-first personal finance app for Android. On-device AI, Zero-Based Budgeting, Zen Score, and more. No account, no cloud, no tracking.">
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0F17;
+            --bg-footer: #070A10;
+            --card: #111827;
+            --border: #374151;
+            --border-soft: #1F2937;
+            --text: #F3F4F6;
+            --text-muted: #D1D5DB;
+            --text-faint: #9CA3AF;
+            --green: #34D399;
+            --green-dark: #10B981;
+            --green-deep: #059669;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAV — matches index.html */
+        nav {
+            border-bottom: 1px solid var(--border-soft);
+            background-color: var(--bg);
+            padding: 20px;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo { font-size: 20px; font-weight: 800; color: #FFFFFF; text-decoration: none; }
+        .logo-green { color: var(--green); }
+        .nav-links a {
+            color: #D1D5DB;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 24px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--green); }
+
+        /* HERO */
+        header.hero {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 56px 20px 24px 20px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: rgba(6, 78, 59, 0.5);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            color: var(--green);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+        .hero-logo {
+            width: 132px;
+            height: 132px;
+            border-radius: 28px;
+            object-fit: cover;
+            margin: 0 auto 28px auto;
+            display: block;
+            box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25), 0 24px 48px -12px rgba(52, 211, 153, 0.25);
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+        .hero-p {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .hero-quote {
+            font-size: 19px;
+            font-style: italic;
+            color: #FFFFFF;
+            max-width: 560px;
+            margin: 28px auto 0 auto;
+            line-height: 1.55;
+            border-left: 3px solid var(--green);
+            padding-left: 16px;
+            text-align: left;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+
+        main { max-width: 1000px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+        /* BUTTONS — matches index.html */
+        .btn-play {
+            display: inline-block;
+            text-align: center;
+            background-color: var(--green);
+            color: var(--bg);
+            font-weight: 800;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-play:hover { background-color: var(--green-dark); color: #FFFFFF; }
+        .btn-hunt {
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #4B5563;
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .btn-hunt:hover { border-color: var(--green); }
+
+        /* SECTIONS */
+        section { padding: 48px 0; border-top: 1px solid var(--border-soft); }
+        section:first-of-type { border-top: none; }
+        .section-label {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--green);
+            margin: 0 0 12px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+        .section-intro {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 680px;
+            margin: 0 0 36px 0;
+        }
+
+        /* FEATURE GRID */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 700px) {
+            .feature-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .feature-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .feature-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+        .feature-card h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0 0 8px 0;
+        }
+        .feature-card p {
+            font-size: 13.5px;
+            color: var(--text-faint);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* SPEC LIST */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px 32px;
+        }
+        @media (min-width: 700px) {
+            .spec-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .spec-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .spec-check {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(52, 211, 153, 0.15);
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            margin-top: 1px;
+        }
+        .spec-text strong { color: #FFFFFF; font-size: 14px; font-weight: 700; }
+        .spec-text span { display: block; color: var(--text-faint); font-size: 13px; line-height: 1.55; margin-top: 3px; }
+
+        /* PRICING */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 700px) {
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .price-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .price-card.featured {
+            border-color: rgba(52, 211, 153, 0.5);
+            background: linear-gradient(160deg, #111827 0%, #0d1f1a 100%);
+            position: relative;
+        }
+        .price-card.featured::before {
+            content: "LIMITED LAUNCH OFFER";
+            position: absolute;
+            top: -11px;
+            left: 32px;
+            background-color: var(--green);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 9999px;
+        }
+        .price-card h3 { font-size: 18px; font-weight: 800; color: #FFFFFF; margin: 8px 0 6px 0; }
+        .price-card .price-note { font-size: 13px; color: var(--text-faint); margin-bottom: 20px; }
+        .price-card ul { margin: 0; padding: 0; list-style: none; }
+        .price-card li {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .price-card li:last-child { border-bottom: none; }
+
+        /* FINAL CTA */
+        .final-cta {
+            text-align: center;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px 24px;
+        }
+        .final-cta h2 { font-size: 26px; font-weight: 800; color: #FFFFFF; margin: 0 0 12px 0; }
+        .final-cta p { color: var(--text-muted); font-size: 14.5px; max-width: 480px; margin: 0 auto 28px auto; line-height: 1.6; }
+
+        footer {
+            border-top: 1px solid var(--border-soft);
+            background-color: var(--bg-footer);
+            padding: 32px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-top: 48px;
+        }
+        .footer-back { display: block; margin-bottom: 16px; color: var(--text-faint); text-decoration: none; font-weight: 600; }
+        .footer-back:hover { color: var(--green); }
+        .footer-badge { margin-bottom: 16px; display: block; }
+        .footer-badge img { vertical-align: middle; transition: opacity 0.2s; }
+        .footer-badge img:hover { opacity: 0.8; }
+        footer p { margin: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Byrsa <span class="logo-green">Team</span></a>
+            <div class="nav-links">
+                <a href="index.html#apps">Our Apps</a>
+                <a href="https://sadokjabli.github.io/budgetzen-legal-pages/" target="_blank">Legal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="badge">⚡ Radical Privacy & Local AI</div>
+        <img src="budgetzen-hero.png" alt="BudgetZen logo" class="hero-logo">
+        <h1>A financial app as powerful as a bank.<br>As private as your diary.</h1>
+        <p class="hero-p">BudgetZen is a beautiful, privacy-first personal finance app that works 100% offline. On-device AI, Zero-Based Budgeting, and a Zen Score that gamifies your financial health — with no account, no cloud, and no data tracking, ever.</p>
+        <div class="hero-cta">
+            <a href="https://play.google.com/store/apps/details?id=com.budgetzen.app" target="_blank" class="btn-play">Get it on Google Play</a>
+            <a href="https://www.saashub.com/manage/budgetzen-by-byrsa-team" target="_blank" class="btn-hunt">View on SaaSHub 🚀</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ORIGIN STORY -->
+        <section>
+            <p class="hero-quote">"What if a financial app could be as powerful as a bank, but as private as your personal diary?"</p>
+            <p class="section-intro" style="margin-top: 28px; max-width: 100%;">Most personal finance apps force you to create an account, sync your bank credentials to a cloud, and quietly monetize your spending data. BudgetZen was built around the opposite premise: absolute privacy. No account. No cloud. No tracking. It works entirely offline, on your device.</p>
+        </section>
+
+        <!-- WHY IT'S DIFFERENT -->
+        <section>
+            <p class="section-label">Why BudgetZen</p>
+            <h2 class="section-title">Six reasons it's different</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🧠</span>
+                    <h4>On-Device AI Coach</h4>
+                    <p>All spending analysis and end-of-month predictions happen directly on your phone. Not a single byte of data ever leaves your device.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚖️</span>
+                    <h4>Zero-Based Budget Mode</h4>
+                    <p>Give every dollar a job with a live counter that hits zero when your monthly plan is perfectly balanced. Includes 1-tap 50/30/20 auto-distribution.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h4>Classic Budget Mode</h4>
+                    <p>Track as you go. On-device AI detects unusual spikes, identifies hidden subscriptions, and predicts your end-of-month balance.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h4>Zen Score</h4>
+                    <p>Gamify your financial health with local metrics and 20 achievement badges, all computed on-device.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏦</span>
+                    <h4>Smart CSV Bank Import</h4>
+                    <p>No risky live banking sync. Drag and drop your bank's CSV (Revolut, N26, and more) — a local algorithm auto-categorizes every transaction.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h4>Globally Ready</h4>
+                    <p>Available in 10 languages — including full right-to-left support for Arabic — and 60+ currencies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FULL SPECS -->
+        <section>
+            <p class="section-label">Inside the app</p>
+            <h2 class="section-title">Every feature, in detail</h2>
+            <div class="spec-grid">
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>100% Local & Private</strong><span>All financial data stays on your device. No servers, no cloud, no account required.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Unlimited Transactions & Budgets</strong><span>No artificial limits, even in the free version. Full tracking without friction.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Zero-Based Budgeting (ZBB)</strong><span>Assign every dollar a job with manual allocation, plus automatic 50/30/20 distribution.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>On-Device AI Insights</strong><span>12 types of local insights: spending velocity, implicit recurring transactions, deficit alerts, and more.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Advanced Analytics & Charts</strong><span>Pie, bar, balance evolution curve, and revenue vs. expenses dual bar — beautiful, SVG-native charts.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Project Simulator</strong><span>Plan house, car, travel, or education goals with feasibility scores and risk analysis.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Quick Goal Tracker</strong><span>Set a savings target, see progress, and get the monthly amount needed to reach it.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Recurring Transaction Reminders</strong><span>Push notifications for periodic bills, subscriptions, or salaries.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>CSV Import/Export</strong><span>Import bank statements with automatic categorization. Export to CSV, JSON, TXT, or PDF.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Weekly Financial Coach</strong><span>A personalized weekly summary notification, with savings opportunities in Premium.</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Monthly PDF Report</strong><span>Auto-generated report with charts, budget tables, project progress, and AI insights. (Premium)</span></div>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-check">✓</span>
+                    <div class="spec-text"><strong>Family Sharing</strong><span>Share budgets securely via encrypted .bz files — pure local encryption, no cloud involved. (Premium)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section>
+            <p class="section-label">Pricing</p>
+            <h2 class="section-title">Free to use. Optional to upgrade.</h2>
+            <p class="section-intro">BudgetZen's core features, including unlimited transactions and Zero-Based Budgeting, are free to use for as long as you like. Going Premium is a choice for anyone who wants extra comfort or more advanced tools — not a requirement.</p>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Free</h3>
+                    <p class="price-note">Everything you need to start budgeting privately.</p>
+                    <ul>
+                        <li>Unlimited transactions & budgets</li>
+                        <li>Zero-Based & Classic budget modes</li>
+                        <li>On-device AI spending insights</li>
+                        <li>Zen Score + 3 starter badges</li>
+                        <li>CSV bank import</li>
+                        <li>Basic weekly coach summary</li>
+                    </ul>
+                </div>
+                <div class="price-card featured">
+                    <h3>Lifetime</h3>
+                    <p class="price-note">One-time payment. Everything unlocked, forever.</p>
+                    <ul>
+                        <li>All 20 Zen Score badges</li>
+                        <li>Advanced charts & balance evolution curve</li>
+                        <li>Monthly PDF reports</li>
+                        <li>Encrypted family sharing</li>
+                        <li>Full weekly coach with savings opportunities</li>
+                        <li>Available in restricted quantities per launch wave, to keep development sustainable</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section style="border-top: none; padding-top: 8px;">
+            <div class="final-cta">
+                <h2>Your financial diary, fully private.</h2>
+                <p>Download BudgetZen free, try it with your own budget, and decide for yourself whether the Lifetime plan is worth it.</p>
+                <div class="hero-cta" style="margin-top: 0;">
+                    <a href="https://play.google.com/store/apps/details?id=com.budgetzen.app" target="_blank" class="btn-play">Get it on Google Play</a>
+                    <a href="https://www.saashub.com/manage/budgetzen-by-byrsa-team" target="_blank" class="btn-hunt">View on SaaSHub 🚀</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="index.html" class="footer-back">← Back to Byrsa Team</a>
+        <div class="footer-badge">
+            <a href="https://openhunts.com" target="_blank" title="OpenHunts Club">
+                <img alt="OpenHunts Club Member" height="105" src="https://cdn.openhunts.com/badges/club.webp" style="width: 195px; height: auto;" width="486">
+            </a>
+        </div>
+        <p>&copy; 2026 Byrsa Team. Built for high privacy.</p>
+    </footer>
+
+</body>
+</html>
