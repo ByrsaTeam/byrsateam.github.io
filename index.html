@@ -5,8 +5,8 @@
 <meta name="description" content="Byrsa Team builds privacy-first mobile apps that run 100% locally. No cloud, no tracking. Home of BudgetZen.">
 <link rel="icon" href="favicon.png">
 <style>
-:root{--bg:#f6f7ff;--card:#fff;--tx:#1b1f3b;--mu:#5d637f;--pr:#5b5bf5;--gr:#10b981;--bd:#e3e5f8;--sh:0 10px 30px #5b5bf51f;--hbg:url(hero-light.webp);--htx:#1b1f3b;--hsub:#3b4166;--gd:#8a6414;--hg:linear-gradient(90deg,#8a6414,#c28f1c,#8a6414)}
-:root[data-t=dark]{--bg:#0d0f24;--card:#141a33;--tx:#eef0ff;--mu:#9aa0c7;--bd:#262b57;--sh:0 10px 30px #0008;--hbg:url(hero-dark.webp);--htx:#fff;--hsub:#d6d9f0;--gd:#f2cf72;--hg:linear-gradient(90deg,#f7dc8a,#d4a73a,#f7dc8a)}
+:root{--bg:#f6f7ff;--card:#fff;--tx:#1b1f3b;--mu:#5d637f;--pr:#5b5bf5;--gr:#10b981;--bd:#e3e5f8;--sh:0 10px 30px #5b5bf51f;--hbg:url(hero-light.webp);--htx:#1b1f3b;--hsub:#3b4166;--gd:#8a6414;--hg:linear-gradient(90deg,#8a6414,#c28f1c,#8a6414);--hts:0 1px 12px #ffffffb0;--hf:drop-shadow(0 1px 8px #fffa)}
+:root[data-t=dark]{--bg:#0d0f24;--card:#141a33;--tx:#eef0ff;--mu:#9aa0c7;--bd:#262b57;--sh:0 10px 30px #0008;--hbg:url(hero-dark.webp);--htx:#fff;--hsub:#d6d9f0;--gd:#f2cf72;--hg:linear-gradient(90deg,#f7dc8a,#d4a73a,#f7dc8a);--hts:0 2px 14px #000c;--hf:drop-shadow(0 2px 10px #000b)}
 *{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
 body{font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Tahoma,sans-serif;background:var(--bg);color:var(--tx)}
 a{color:inherit;text-decoration:none}
@@ -14,16 +14,16 @@ header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px
 header b{display:flex;align-items:center;gap:8px;margin-inline-end:auto}header img{width:32px;height:32px;border-radius:50%}
 select,.ic{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:7px 9px;font:inherit;cursor:pointer}
 .nl{color:var(--mu);font-size:15px}
-.hero{position:relative;text-align:center;padding:110px 20px 100px;background:var(--hbg) center/cover no-repeat;color:var(--htx)}
-.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:110px;background:linear-gradient(transparent,var(--bg))}
+.hero{--s:min(100vw,820px);position:relative;text-align:center;padding:calc(var(--s)*.8) 20px 56px;color:var(--htx);overflow:hidden}.hero:before{content:"";position:absolute;top:0;left:50%;width:var(--s);height:var(--s);transform:translateX(-50%);background:var(--hbg) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent)}
+.hero:after{content:"";position:absolute;top:calc(var(--s)*.8);left:0;right:0;height:calc(var(--s)*.2);background:linear-gradient(transparent,var(--bg))}
 .hi{position:relative;z-index:1;max-width:820px;margin:auto}
 .pill{display:inline-block;padding:6px 16px;border-radius:99px;background:color-mix(in srgb,var(--bg) 55%,transparent);backdrop-filter:blur(6px);border:1px solid #d4a73a;color:var(--gd);font-weight:600;font-size:14px;margin-bottom:18px}
-h1{font-size:clamp(32px,7vw,58px);line-height:1.15;background:var(--hg);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;text-wrap:balance}
-.sub{color:var(--hsub);font-size:18px;max-width:660px;margin:0 auto}
+h1{font-size:clamp(32px,7vw,58px);line-height:1.15;background:var(--hg);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;text-wrap:balance;filter:var(--hf)}
+.sub{color:var(--hsub);text-shadow:var(--hts);font-size:18px;max-width:660px;margin:0 auto}
 section{max-width:1000px;margin:auto;padding:36px 20px 0}h2{text-align:center;font-size:clamp(24px,4vw,34px);margin-bottom:24px}
 .aps{display:grid;gap:18px}
 .ap{display:grid;grid-template-columns:1fr 270px;gap:30px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:22px;box-shadow:var(--sh);padding:28px;transition:.25s}.ap:hover{transform:translateY(-4px)}
-.ah{display:flex;align-items:center;gap:16px;margin-bottom:14px}.ai{width:64px;height:64px;flex:none;background:#fff;border-radius:16px;display:grid;place-items:center;padding:8px;border:1px solid var(--bd)}.ai img{width:100%}
+.ah{display:flex;align-items:center;gap:16px;margin-bottom:14px}.ai{width:64px;height:64px;flex:none;background:#fff;border-radius:16px;display:grid;place-items:center;padding:8px;border:1px solid var(--bd)}.ai img{width:100%}.ai.f{padding:0;overflow:hidden;background:transparent}
 .ap h3{font-size:24px;line-height:1.2}.tag{color:var(--gr);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.ap p{color:var(--mu);font-size:15px}
 .ab{display:flex;flex-direction:column;gap:12px}.btn{display:block;text-align:center;font-weight:700;padding:13px 18px;border-radius:14px;transition:.2s}.btn:hover{transform:translateY(-2px)}
 .btn.g{background:#34d399;color:#06281c;box-shadow:0 8px 22px #34d39944}.btn.o{border:1px solid var(--bd);background:transparent}.btn.o:hover{border-color:var(--pr)}
@@ -32,7 +32,7 @@ section{max-width:1000px;margin:auto;padding:36px 20px 0}h2{text-align:center;fo
 .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{padding:22px;transition:.25s}.card:hover{transform:translateY(-6px)}.card big{font-size:30px;display:block}.card h3{margin:8px 0 4px;font-size:18px}.card p{color:var(--mu);font-size:15px}
 footer{text-align:center;color:var(--mu);font-size:14px;padding:44px 20px calc(24px + env(safe-area-inset-bottom,0px))}
 .rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.on{opacity:1;transform:none}
-@media(max-width:720px){.ap{grid-template-columns:1fr;gap:18px}.hero{padding:80px 18px 80px}}
+@media(max-width:720px){.ap{grid-template-columns:1fr;gap:18px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style></head><body>
 <header><b><img src="byrsa-icon.webp" alt="">Byrsa Team</b><a class="nl" href="#apps" data-i="0"></a>
@@ -77,6 +77,36 @@ const A=[
    "ko": "프라이버시를 최우선으로 한, 100% 오프라인으로 작동하는 아름다운 가계부 앱. 기기 내 AI 인사이트, 제로베이스 및 클래식 예산, Zen Score와 배지 20개, 스마트 은행 CSV 가져오기, 프로젝트 시뮬레이터, 주간 코치, 고급 차트, 60개 이상의 통화와 10개 언어 지원. 계정, 클라우드, 추적이 없습니다.",
    "tr": "Gizliliği öncelikli, %100 çevrimdışı çalışan güzel bir kişisel finans uygulaması. Cihazda YZ içgörüleri, sıfır tabanlı ve klasik bütçe, Zen Score ve 20 rozet, akıllı banka CSV içe aktarma, proje simülatörü, haftalık koç, gelişmiş grafikler, 60+ para birimi ve 10 dil. Hesap yok, bulut yok, takip yok."
   }
+ },
+ {
+  "name": "SecureVault AI",
+  "icon": "securevault-logo.png",
+  "play": "https://play.google.com/store/apps/details?id=com.securevault.ai",
+  "page": "https://securevaultai.github.io/#top",
+  "tag": {
+   "en": "Security • Privacy",
+   "fr": "Sécurité • Confidentialité",
+   "de": "Sicherheit • Datenschutz",
+   "es": "Seguridad • Privacidad",
+   "it": "Sicurezza • Privacy",
+   "pt": "Segurança • Privacidade",
+   "ja": "セキュリティ • プライバシー",
+   "ar": "الأمان • الخصوصية",
+   "ko": "보안 • 프라이버시",
+   "tr": "Güvenlik • Gizlilik"
+  },
+  "desc": {
+   "en": "SecureVault AI is an encrypted vault, password manager and decoy vault that never touches the internet. Your documents, passwords and vault contents are encrypted and decrypted only on your device — nothing is ever uploaded, not even to us.",
+   "fr": "SecureVault AI est un coffre-fort chiffré, un gestionnaire de mots de passe et un coffre-leurre qui ne touche jamais à internet. Vos documents, mots de passe et le contenu de votre coffre sont chiffrés et déchiffrés uniquement sur votre appareil : rien n'est jamais envoyé, pas même à nous.",
+   "de": "SecureVault AI ist ein verschlüsselter Tresor, Passwortmanager und Köder-Tresor, der nie das Internet berührt. Ihre Dokumente, Passwörter und Tresorinhalte werden nur auf Ihrem Gerät ver- und entschlüsselt – nichts wird je hochgeladen, nicht einmal an uns.",
+   "es": "SecureVault AI es una bóveda cifrada, un gestor de contraseñas y una bóveda señuelo que nunca toca internet. Tus documentos, contraseñas y el contenido de la bóveda se cifran y descifran solo en tu dispositivo: nada se sube jamás, ni siquiera a nosotros.",
+   "it": "SecureVault AI è una cassaforte cifrata, un gestore di password e una cassaforte esca che non tocca mai internet. I tuoi documenti, le password e il contenuto della cassaforte vengono cifrati e decifrati solo sul tuo dispositivo: nulla viene mai caricato, nemmeno da noi.",
+   "pt": "O SecureVault AI é um cofre criptografado, gerenciador de senhas e cofre isca que nunca toca a internet. Seus documentos, senhas e o conteúdo do cofre são criptografados e descriptografados apenas no seu aparelho: nada é enviado, nem mesmo para nós.",
+   "ja": "SecureVault AIは、インターネットに一切接続しない暗号化ボールト、パスワードマネージャー、デコイボールトです。書類、パスワード、ボールトの内容は端末内でのみ暗号化・復号され、何もアップロードされません。私たちにさえも。",
+   "ar": "SecureVault AI خزنة مشفرة ومدير كلمات مرور وخزنة خادعة لا تلمس الإنترنت أبداً. تُشفَّر مستنداتك وكلمات مرورك ومحتويات الخزنة وتُفكّ تشفيرها على جهازك فقط، ولا يُرفع شيء أبداً، حتى إلينا.",
+   "ko": "SecureVault AI는 인터넷에 전혀 연결되지 않는 암호화 금고, 비밀번호 관리자, 디코이 금고입니다. 문서, 비밀번호, 금고 내용은 기기에서만 암호화·복호화되며 아무것도 업로드되지 않습니다. 저희에게조차도요.",
+   "tr": "SecureVault AI, internete hiç dokunmayan şifreli bir kasa, parola yöneticisi ve tuzak kasadır. Belgeleriniz, parolalarınız ve kasa içeriğiniz yalnızca cihazınızda şifrelenir ve çözülür; hiçbir şey yüklenmez, bize bile."
+  }
  }
 ];
 /* Philosophy section per language: 0 title, 1 stat labels, 2 cards, 3 data-flow labels */
@@ -84,7 +114,7 @@ const P={"en": ["Our philosophy", "Servers|Local & on-device|Trackers|Languages"
 const $=s=>document.querySelector(s),R=document.documentElement;
 function set(l){const d=U[l]||U.en,L=U[l]?l:'en';R.lang=L;R.dir=L=='ar'?'rtl':'ltr';
 document.querySelectorAll('[data-i]').forEach(e=>e.textContent=d[e.dataset.i]);
-$('#AP').innerHTML=A.map(a=>`<div class="ap"><div><div class="ah"><div class="ai"><img src="${a.icon}" alt="${a.name}"></div><div><h3>${a.name}</h3><div class="tag">${a.tag[L]||a.tag.en}</div></div></div><p>${a.desc[L]||a.desc.en}</p></div><div class="ab"><a class="btn g" target="_blank" rel="noopener" href="${a.play}">${d[4]}</a>${a.page?`<a class="btn o" target="_blank" rel="noopener" href="${a.page}">${d[5].replace('{n}',a.name)}</a>`:''}</div></div>`).join('');
+$('#AP').innerHTML=A.map(a=>`<div class="ap"><div><div class="ah"><div class="ai${a.full?' f':''}"><img src="${a.icon}" alt="${a.name}"></div><div><h3>${a.name}</h3><div class="tag">${a.tag[L]||a.tag.en}</div></div></div><p>${a.desc[L]||a.desc.en}</p></div><div class="ab"><a class="btn g" target="_blank" rel="noopener" href="${a.play}">${d[4]}</a>${a.page?`<a class="btn o" target="_blank" rel="noopener" href="${a.page}">${d[5].replace('{n}',a.name)}</a>`:''}</div></div>`).join('');
 const e=P[L],v=['0','100%','0','10'];$('#TT').textContent=e[0];
 $('#ST').innerHTML=e[1].split('|').map((t,i)=>`<div class="stat"><b>${v[i]}</b><span>${t}</span></div>`).join('');
 $('#CD').innerHTML=e[2].split('|').map(x=>{const[a,b,c]=x.split('::');return`<div class="card"><big>${a}</big><h3>${b}</h3><p>${c}</p></div>`}).join('');
