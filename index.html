@@ -1,274 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Byrsa Team | Privacy-First Mobile Apps</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #0B0F17; 
-            color: #F3F4F6; 
-            margin: 0; 
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        nav {
-            border-bottom: 1px solid #1F2937;
-            background-color: #0B0F17;
-            padding: 20px;
-        }
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #FFFFFF;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .logo-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            display: block;
-        }
-        .logo-green {
-            color: #34D399;
-        }
-        .nav-links a {
-            color: #D1D5DB;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            margin-left: 24px;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #34D399;
-        }
-        header {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 60px 20px 40px 20px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(6, 78, 59, 0.5);
-            border: 1px solid rgba(52, 211, 153, 0.4);
-            color: #34D399;
-            padding: 6px 16px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-        h1 {
-            font-size: 48px;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin: 0 0 24px 0;
-            line-height: 1.2;
-        }
-        .hero-p {
-            font-size: 18px;
-            color: #D1D5DB;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        main {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .app-card {
-            background-color: #111827;
-            border: 1px solid #374151;
-            padding: 32px;
-            border-radius: 16px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            align-items: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        @media (min-width: 768px) {
-            .app-card {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .app-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #10B981, #059669);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 800;
-            color: #FFFFFF;
-        }
-        .app-title h3 {
-            font-size: 24px;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin: 0;
-        }
-        .app-category {
-            font-size: 12px;
-            color: #34D399;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 4px 0 0 0;
-        }
-        .app-description {
-            color: #D1D5DB;
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0;
-        }
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-        }
-        .btn-play {
-            display: block;
-            text-align: center;
-            background-color: #34D399;
-            color: #0B0F17;
-            font-weight: 800;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background-color 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .btn-play:hover {
-            background-color: #10B981;
-            color: #FFFFFF;
-        }
-        .btn-hunt {
-            display: block;
-            text-align: center;
-            border: 1px solid #4B5563;
-            color: #FFFFFF;
-            font-weight: 600;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            text-decoration: none;
-            transition: border-color 0.2s;
-        }
-        .btn-hunt:hover {
-            border-color: #34D399;
-        }
-        footer {
-            border-top: 1px solid #111827;
-            background-color: #070A10;
-            padding: 32px 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #9CA3AF;
-            margin-top: auto;
-        }
-        .footer-badge {
-            margin-bottom: 16px;
-            display: block;
-        }
-        .footer-badge img {
-            vertical-align: middle;
-            transition: opacity 0.2s;
-        }
-        .footer-badge img:hover {
-            opacity: 0.8;
-        }
-        footer p {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- NAVBAR -->
-    <nav>
-        <div class="nav-container">
-            <span class="logo"><img src="favicon.png" alt="Byrsa Team logo" class="logo-icon">Byrsa <span class="logo-green">Team</span></span>
-            <div class="nav-links">
-                <a href="#apps">Our Apps</a>
-                <a href="https://sadokjabli.github.io/budgetzen-legal-pages/" target="_blank">Legal</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header>
-        <div class="badge">⚡ Radical Privacy & Local AI</div>
-        <h1>Software built like a Diary.</h1>
-        <p class="hero-p">Byrsa Team engineers high-performance mobile software that runs 100% locally on your machine. No cloud dependency. No tracking. Total data sovereignty.</p>
-    </header>
-
-    <!-- MAIN APPS PRODUCTION -->
-    <main id="apps">
-        <div class="app-card">
-            <div class="app-info">
-                <div class="app-header">
-                    <img src="BudgetZen-logo.png" alt="BudgetZen Logo" style="width: 56px; height: 56px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <div class="app-title">
-                        <h3>BudgetZen</h3>
-                        <p class="app-category">Finance • Personal Productivity</p>
-                    </div>
-                </div>
-                <p class="app-description">
-                    A beautiful, privacy-first personal finance app that works 100% offline. Powered by on-device AI for daily insights, Zero-Based Budget Mode, Classic Budget Mode, Zen Score & 20 badges, smart bank CSV import, Project simulator, Weekly coach notifications, Advanced charts, 60+ currencies & 10 languages. No account, no cloud, no data tracking. Your financial data stays yours.
-                </p>
-            </div>
-            <div class="btn-container">
-                <!-- BOUTON GOOGLE PLAY AVEC VOTRE LIEN -->
-                <a href="https://play.google.com/store/apps/details?id=com.budgetzen.app" target="_blank" class="btn-play">
-                    Get it on Google Play
-                </a>
-                <!-- BOUTON PRODUCT HUNT AVEC VOTRE LIEN -->
-                <a href="https://byrsateam.github.io/budgetzen.html" target="_blank" class="btn-hunt">
-                    About BudgetZen 🚀
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Byrsa Team. Built for high privacy.</p>
-        <div class="footer-badge"> </div>
-    </footer>
-
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Byrsa Team | Privacy-First Mobile Apps</title>
+<meta name="description" content="Byrsa Team builds privacy-first mobile apps that run 100% locally. No cloud, no tracking. Home of BudgetZen.">
+<link rel="icon" href="favicon.png">
+<style>
+:root{--bg:#f6f7ff;--card:#fff;--tx:#1b1f3b;--mu:#5d637f;--pr:#5b5bf5;--gr:#16b97a;--bd:#e3e5f8;--sh:0 10px 30px #5b5bf51f}
+:root[data-t=dark]{--bg:#0d0f24;--card:#161a38;--tx:#eef0ff;--mu:#9aa0c7;--bd:#262b57;--sh:0 10px 30px #0008}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Tahoma,sans-serif;background:var(--bg);color:var(--tx)}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+header b{display:flex;align-items:center;gap:8px;margin-inline-end:auto}header img{width:30px}
+select,.ic{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:7px 9px;font:inherit;cursor:pointer}
+.nl{color:var(--mu);font-size:15px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--pr),#8a5cf6);color:#fff;font-weight:700;padding:14px 26px;border-radius:14px;box-shadow:0 8px 24px #5b5bf566;transition:.2s}
+.btn:hover{transform:translateY(-2px) scale(1.03)}.btn.o{background:var(--card);color:var(--pr);border:1px solid var(--pr);box-shadow:none}
+.hero{text-align:center;padding:48px 20px 20px;max-width:880px;margin:auto}
+.orb{position:relative;width:180px;height:180px;margin:0 auto 22px;display:grid;place-items:center}
+.orb img{width:84px;z-index:2;animation:fl 4s ease-in-out infinite;filter:drop-shadow(0 10px 20px #5b5bf588)}
+.orb i{position:absolute;inset:0;border-radius:50%;border:2px solid var(--pr);opacity:0;animation:rp 3.6s infinite}
+.orb i:nth-child(2){animation-delay:1.2s}.orb i:nth-child(3){animation-delay:2.4s}
+.orb em{position:absolute;inset:0;font-style:normal;animation:sp 14s linear infinite}
+.orb em span{position:absolute;font-size:22px;background:var(--card);border-radius:50%;width:40px;height:40px;display:grid;place-items:center;box-shadow:var(--sh);animation:sp 14s linear infinite reverse}
+.orb em span:nth-child(1){top:-10px;left:70px}.orb em span:nth-child(2){bottom:-10px;left:70px}.orb em span:nth-child(3){top:70px;left:-10px}.orb em span:nth-child(4){top:70px;right:-10px}
+@keyframes fl{50%{transform:translateY(-10px)}}@keyframes rp{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.5);opacity:0}}@keyframes sp{to{transform:rotate(360deg)}}
+.pill{display:inline-block;padding:6px 14px;border-radius:99px;background:var(--card);border:1px solid var(--bd);color:var(--pr);font-weight:600;font-size:14px;margin-bottom:16px}
+h1{font-size:clamp(30px,7vw,56px);line-height:1.15;background:linear-gradient(90deg,var(--pr),#a15cf6,var(--gr));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:16px}
+.sub{color:var(--mu);font-size:18px;max-width:640px;margin:0 auto}
+section{max-width:760px;margin:auto;padding:40px 20px}
+.app{background:var(--card);border:1px solid var(--bd);border-radius:24px;box-shadow:var(--sh);padding:30px;text-align:center;transition:.25s}
+.app:hover{transform:translateY(-6px)}.app>img{width:96px;border-radius:22px;margin-bottom:12px}
+.app h3{font-size:28px}.tag{color:var(--pr);font-weight:600;margin-bottom:12px}.app p{color:var(--mu);margin-bottom:22px}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{text-align:center;color:var(--mu);font-size:14px;padding:10px 20px calc(24px + env(safe-area-inset-bottom,0px))}
+.rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<header><b><img src="favicon.png" alt="">Byrsa Team</b><a class="nl" href="#apps" data-i="0"></a><a class="nl" href="https://sadokjabli.github.io/budgetzen-legal-pages/" data-i="1"></a>
+<select id="L" aria-label="Language"><option value="en">English</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="it">Italiano</option><option value="pt">Português</option><option value="ja">日本語</option><option value="ar">العربية</option><option value="ko">한국어</option><option value="tr">Türkçe</option></select>
+<button class="ic" id="T" aria-label="Theme">🌓</button></header>
+<div class="hero"><div class="orb"><i></i><i></i><i></i><em><span>🔒</span><span>🧠</span><span>⚡</span><span>🌍</span></em><img src="favicon.png" alt="Byrsa Team"></div>
+<div class="pill" data-i="2"></div><h1 data-i="3"></h1><p class="sub" data-i="4"></p></div>
+<section id="apps" class="rv"><div class="app"><img src="BudgetZen-logo.png" alt="BudgetZen"><h3>BudgetZen</h3><div class="tag" data-i="5"></div><p data-i="6"></p>
+<div class="acts"><a class="btn" data-i="7" href="https://play.google.com/store/apps/details?id=com.budgetzen.app"></a><a class="btn o" data-i="8" href="budgetzen.html"></a></div></div></section>
+<footer>© 2026 Byrsa Team. <span data-i="9"></span></footer>
+<script>
+const D={
+en:["Our Apps","Legal","⚡ Radical Privacy & Local AI","Software built like a Diary.","Byrsa Team engineers high-performance mobile software that runs 100% locally on your device. No cloud dependency. No tracking. Total data sovereignty.","Finance • Personal Productivity","A beautiful, privacy-first personal finance app that works 100% offline. On-device AI insights, Zero-Based and Classic budgeting, Zen Score & 20 badges, smart bank CSV import, project simulator, weekly coach, advanced charts, 60+ currencies & 10 languages. No account, no cloud, no tracking.","Get it on Google Play","About BudgetZen 🚀","Built for high privacy."],
+fr:["Nos apps","Mentions légales","⚡ Confidentialité radicale & IA locale","Des logiciels conçus comme un journal intime.","Byrsa Team conçoit des logiciels mobiles performants qui fonctionnent 100 % en local sur votre appareil. Aucun cloud. Aucun suivi. Souveraineté totale sur vos données.","Finance • Productivité personnelle","Une belle app de finances personnelles, axée sur la vie privée, 100 % hors ligne. IA sur l'appareil, budget base zéro et classique, Zen Score et 20 badges, import CSV bancaire intelligent, simulateur de projets, coach hebdomadaire, graphiques avancés, 60+ devises et 10 langues. Sans compte, sans cloud, sans suivi.","Disponible sur Google Play","Découvrir BudgetZen 🚀","Conçu pour la confidentialité."],
+de:["Unsere Apps","Rechtliches","⚡ Radikaler Datenschutz & lokale KI","Software, gebaut wie ein Tagebuch.","Byrsa Team entwickelt leistungsstarke mobile Software, die zu 100 % lokal auf Ihrem Gerät läuft. Keine Cloud. Kein Tracking. Volle Datenhoheit.","Finanzen • Persönliche Produktivität","Eine schöne, datenschutzorientierte Finanz-App, die 100 % offline funktioniert. KI-Einblicke auf dem Gerät, Zero-Based- und Klassik-Budget, Zen Score & 20 Badges, smarter CSV-Bankimport, Projektsimulator, Wochen-Coach, erweiterte Diagramme, 60+ Währungen & 10 Sprachen. Kein Konto, keine Cloud, kein Tracking.","Bei Google Play laden","Mehr über BudgetZen 🚀","Gebaut für maximalen Datenschutz."],
+es:["Nuestras apps","Legal","⚡ Privacidad radical e IA local","Software creado como un diario.","Byrsa Team crea software móvil de alto rendimiento que funciona 100% en local en tu dispositivo. Sin nube. Sin rastreo. Soberanía total de tus datos.","Finanzas • Productividad personal","Una hermosa app de finanzas personales, centrada en la privacidad, 100% sin conexión. IA en el dispositivo, presupuesto base cero y clásico, Zen Score y 20 insignias, importación CSV bancaria inteligente, simulador de proyectos, coach semanal, gráficos avanzados, más de 60 monedas y 10 idiomas. Sin cuenta, sin nube, sin rastreo.","Disponible en Google Play","Sobre BudgetZen 🚀","Creado para la máxima privacidad."],
+it:["Le nostre app","Note legali","⚡ Privacy radicale e IA locale","Software costruito come un diario.","Byrsa Team realizza software mobile ad alte prestazioni che funziona al 100% in locale sul tuo dispositivo. Nessun cloud. Nessun tracciamento. Piena sovranità sui dati.","Finanza • Produttività personale","Una bellissima app di finanza personale, attenta alla privacy, 100% offline. IA sul dispositivo, budget base zero e classico, Zen Score e 20 badge, import CSV bancario intelligente, simulatore di progetti, coach settimanale, grafici avanzati, oltre 60 valute e 10 lingue. Nessun account, nessun cloud, nessun tracciamento.","Scarica su Google Play","Scopri BudgetZen 🚀","Creato per la massima privacy."],
+pt:["Nossos apps","Legal","⚡ Privacidade radical e IA local","Software feito como um diário.","A Byrsa Team cria software móvel de alto desempenho que funciona 100% localmente no seu aparelho. Sem nuvem. Sem rastreamento. Soberania total dos seus dados.","Finanças • Produtividade pessoal","Um lindo app de finanças pessoais, focado em privacidade, 100% offline. IA no aparelho, orçamento base zero e clássico, Zen Score e 20 medalhas, importação CSV bancária inteligente, simulador de projetos, coach semanal, gráficos avançados, mais de 60 moedas e 10 idiomas. Sem conta, sem nuvem, sem rastreamento.","Baixar no Google Play","Sobre o BudgetZen 🚀","Feito para alta privacidade."],
+ja:["アプリ","法的情報","⚡ 徹底したプライバシーと端末内AI","日記のように作られたソフトウェア。","Byrsa Teamは、端末上で100%ローカルに動作する高性能モバイルソフトウェアを開発しています。クラウド依存なし。追跡なし。データの完全な主権。","ファイナンス • 個人の生産性","プライバシーを最優先した、100%オフラインで動く美しい家計管理アプリ。端末内AIインサイト、ゼロベース＆クラシック予算、Zen Scoreと20個のバッジ、スマートな銀行CSVインポート、プロジェクトシミュレーター、週次コーチ、高度なグラフ、60以上の通貨と10言語に対応。アカウント不要、クラウドなし、追跡なし。","Google Playで入手","BudgetZenについて 🚀","高いプライバシーのために。"],
+ar:["تطبيقاتنا","قانوني","⚡ خصوصية جذرية وذكاء اصطناعي محلي","برمجيات مصممة كالمذكرات الخاصة.","يصمم فريق Byrsa برمجيات جوال عالية الأداء تعمل محلياً بنسبة 100% على جهازك. بلا سحابة. بلا تتبع. سيادة كاملة على بياناتك.","المالية • الإنتاجية الشخصية","تطبيق مالي شخصي جميل يضع الخصوصية أولاً ويعمل دون إنترنت بنسبة 100%. ذكاء اصطناعي على الجهاز، ميزانية الصفر والكلاسيكية، Zen Score و20 شارة، استيراد CSV بنكي ذكي، محاكي مشاريع، مدرب أسبوعي، رسوم متقدمة، أكثر من 60 عملة و10 لغات. بلا حساب ولا سحابة ولا تتبع.","احصل عليه من Google Play","عن BudgetZen 🚀","مبني لأعلى خصوصية."],
+ko:["앱","법적 고지","⚡ 철저한 프라이버시와 기기 내 AI","일기장처럼 만든 소프트웨어.","Byrsa Team은 기기에서 100% 로컬로 실행되는 고성능 모바일 소프트웨어를 만듭니다. 클라우드 의존 없음. 추적 없음. 데이터 완전 주권.","금융 • 개인 생산성","프라이버시를 최우선으로 한, 100% 오프라인으로 작동하는 아름다운 가계부 앱. 기기 내 AI 인사이트, 제로베이스 및 클래식 예산, Zen Score와 배지 20개, 스마트 은행 CSV 가져오기, 프로젝트 시뮬레이터, 주간 코치, 고급 차트, 60개 이상의 통화와 10개 언어 지원. 계정, 클라우드, 추적이 없습니다.","Google Play에서 받기","BudgetZen 알아보기 🚀","높은 프라이버시를 위해 만들었습니다."],
+tr:["Uygulamalarımız","Yasal","⚡ Radikal gizlilik ve yerel YZ","Günlük gibi tasarlanmış yazılım.","Byrsa Team, cihazınızda %100 yerel çalışan yüksek performanslı mobil yazılımlar geliştirir. Bulut bağımlılığı yok. Takip yok. Verileriniz üzerinde tam egemenlik.","Finans • Kişisel verimlilik","Gizliliği öncelikli, %100 çevrimdışı çalışan güzel bir kişisel finans uygulaması. Cihazda YZ içgörüleri, sıfır tabanlı ve klasik bütçe, Zen Score ve 20 rozet, akıllı banka CSV içe aktarma, proje simülatörü, haftalık koç, gelişmiş grafikler, 60+ para birimi ve 10 dil. Hesap yok, bulut yok, takip yok.","Google Play'den indir","BudgetZen hakkında 🚀","Yüksek gizlilik için tasarlandı."]};
+const $=s=>document.querySelector(s),R=document.documentElement;
+function set(l){const d=D[l]||D.en;R.lang=l;R.dir=l=='ar'?'rtl':'ltr';document.querySelectorAll('[data-i]').forEach(e=>e.textContent=d[e.dataset.i]);$('#L').value=l;try{localStorage.bzl=l}catch(e){}}
+let l='en';try{l=localStorage.bzl}catch(e){}l=l||(navigator.language||'en').slice(0,2);set(D[l]?l:'en');
+$('#L').onchange=e=>set(e.target.value);
+const th=t=>{R.dataset.t=t;try{localStorage.bzt=t}catch(e){}};let t0;try{t0=localStorage.bzt}catch(e){}
+th(t0||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));$('#T').onclick=()=>th(R.dataset.t=='dark'?'light':'dark');
+const io=new IntersectionObserver(a=>a.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.1});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script></body></html>
