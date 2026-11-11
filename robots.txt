@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://byrsateam.github.io/sitemap.xml
